@@ -47,28 +47,30 @@ public final class Core {
 	private static boolean GO_MAIN;
 	/** Difficulty settings for level 1. */
 	private static final GameSettings SETTINGS_LEVEL_1 =
-			new GameSettings(5, 4, 60, 2000);
+
+			new GameSettings(1, 5, 4, 60, 2000);
 	/** Difficulty settings for level 2. */
 	private static final GameSettings SETTINGS_LEVEL_2 =
-			new GameSettings(5, 5, 50, 2500);
+			new GameSettings(2, 5, 5, 50, 2500);
 	/** Difficulty settings for level 3. */
 	private static final GameSettings SETTINGS_LEVEL_3 =
-			new GameSettings(6, 5, 40, 1500);
+			new GameSettings(3, 6, 5, 40, 1500);
 	/** Difficulty settings for level 4. */
 	private static final GameSettings SETTINGS_LEVEL_4 =
-			new GameSettings(6, 6, 30, 1500);
+			new GameSettings(4, 6, 6, 30, 1500);
 	/** Difficulty settings for level 5. */
 	private static final GameSettings SETTINGS_LEVEL_5 =
-			new GameSettings(7, 6, 20, 1000);
+			new GameSettings(5, 7, 6, 20, 1000);
 	/** Difficulty settings for level 6. */
 	private static final GameSettings SETTINGS_LEVEL_6 =
-			new GameSettings(7, 7, 10, 1000);
+			new GameSettings(6, 7, 7, 10, 1000);
 	/** Difficulty settings for level 7. */
 	private static final GameSettings SETTINGS_LEVEL_7 =
-			new GameSettings(8, 7, 2, 500);
+			new GameSettings(7,7, 8, 5, 500);
+
 	/** add boss stage **/
 	private static final GameSettings SETTINGS_Boss_Stage=
-			new GameSettings(1, 1, 2, 500);
+			new GameSettings(8, 3,3, 0, 200);
 
 	/** Frame to draw the screen on. */
 	private static Frame frame;
@@ -127,6 +129,7 @@ public final class Core {
 
 		GameState gameState;
 		PermanentState permanentState = PermanentState.getInstance();
+
 		gameState = new GameState(1, 0, MAX_LIVES, 0, 0);
 
 		int returnCode = 1;
@@ -268,43 +271,45 @@ public final class Core {
 				} while (returnCode != 0);
 
 				returnCode = 1; */
-					currentScreen = new StoreScreen(width, height, FPS);
-					LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
-							+ " store screen at " + FPS + " fps.");
-					returnCode = frame.setScreen(currentScreen);
-					LOGGER.info("Closing store screen.");
-					break;
+        
+				currentScreen = new StoreScreen(width, height, FPS);
+				LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
+						+ " store screen at " + FPS + " fps.");
+				returnCode = frame.setScreen(currentScreen);
+				LOGGER.info("Closing store screen.");
+				break;
 
-
-				case 5:
-					// Load
-					String save_info [] = getFileManager().loadInfo();
-					gameState = new GameState(Integer.parseInt(save_info[0]), Integer.parseInt(save_info[1]), Integer.parseInt(save_info[2]), Integer.parseInt(save_info[3]), Integer.parseInt(save_info[4]));
-					returnCode = 2;
-					break;
-
-
-				case 6:
-					// Setting.
-					currentScreen = new SettingScreen(width, height, FPS);
-					LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
-							+ " setting screen at " + FPS + " fps.");
-					returnCode = frame.setScreen(currentScreen);
-					LOGGER.info("Closing setting screen.");
-					break;
-
-				case 7: //Help
-					currentScreen = new HelpScreen(width, height, FPS);
-					LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
-							+ " setting screen at " + FPS + " fps.");
-					returnCode = frame.setScreen(currentScreen);
-					LOGGER.info("Closing help screen.");
-					break;
-
-				case 8: //Volume
-					break;
-
-
+			case 5:
+				// Load
+				String save_info [] = getFileManager().loadInfo();
+				gameState = new GameState(Integer.parseInt(save_info[0]), Integer.parseInt(save_info[1]), Integer.parseInt(save_info[2]), Integer.parseInt(save_info[3]), Integer.parseInt(save_info[4]));
+				returnCode = 2;
+				break;
+				
+			case 6:
+				// Setting.
+				currentScreen = new SettingScreen(width, height, FPS);
+				LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
+						+ " setting screen at " + FPS + " fps.");
+				returnCode = frame.setScreen(currentScreen);
+				LOGGER.info("Closing setting screen.");
+				break;
+				
+			case 7: //Help
+				currentScreen = new HelpScreen(width, height, FPS);
+				LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
+						+ " setting screen at " + FPS + " fps.");
+				returnCode = frame.setScreen(currentScreen);
+				LOGGER.info("Closing help screen.");
+				break;
+				
+			case 8: //Volume //mainmenu 1014
+				currentScreen = new VolumeScreen(width, height, FPS);
+				LOGGER.info("Starting " + WIDTH + "x" + HEIGHT
+						+ " setting screen at " + FPS + " fps.");
+				returnCode = frame.setScreen(currentScreen);
+				LOGGER.info("Closing help screen.");
+				break;
 
 			}
 

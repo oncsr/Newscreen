@@ -548,4 +548,53 @@ public class GameScreen extends Screen {
 		}
 		this.itemiterator.removeAll(recyclable);
 	}
+
+//	private int[] makeRandomBoundery() {
+//		//(int)Math.random() * (maxNumber - minNumber) + minNumber
+//		int widthOrLength = (int)Math.random() * (1 - 0) + 0;
+//		int[] result = new int[2];
+//		// 가로일 때
+//		if (widthOrLength == 0) {
+//			int upOrDown = (int)Math.random() * (1 - 0) + 0;
+//			// 위
+//			if (upOrDown == 0) {
+//				int positionX = (int) Math.random() * (448 - 0) + 0;
+//				int positionY = 0;
+//				result[0] = positionX;
+//				result[1] = positionY;
+//			// 아래
+//			} else {
+//				int positionX = (int) Math.random() * (448 - 0) + 0;
+//				int positionY = 520;
+//				result[0] = positionX;
+//				result[1] = positionY;
+//			}
+//
+//		} else if(widthOrLength == 1){
+//			int leftOrRight = (int)Math.random() * (1 - 0) + 0;
+//			if (leftOrRight ==0) {
+//				int positionX = 0;
+//				int positionY = (int) Math.random() * (520 - 0) + 0;
+//				result[0] = positionX;
+//				result[1] = positionY;
+//			} else {
+//				int positionX = 448;
+//				int positionY = (int) Math.random() * (520 - 0) + 0;
+//				result[0] = positionX;
+//				result[1] = positionY;
+//			}
+//		}
+//		return result;
+//	}
+//	private void createBullet(final Set<Bullet> bullets){
+//		int[] bound = makeRandomBoundery();
+//		if (this.shootingCooldown.checkFinished()) {
+//			this.shootingCooldown.reset();
+//			bullets.add(BulletPool.getBullet(bound[0],
+//					bound[1], BULLET_SPEED));
+//			return true;
+//		}
+//		return false;
+//	}
+
 }
